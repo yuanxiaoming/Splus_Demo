@@ -29,7 +29,6 @@
             android:name="com.example.splus_demo.LoginGameActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleInstance"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -42,7 +41,6 @@
             android:name="com.example.splus_demo.Api_GameActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleInstance"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize" >
         </activity>
