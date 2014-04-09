@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -103,7 +104,9 @@ public class LoginGameActivity extends Activity {
         /**
          * 1.默认SDK更新
          */
-        SplusPayManager.getInstance().init(this, appkey, mInitCallBackImp, true);
+     //   Configuration.ORIENTATION_LANDSCAPE  横屏游戏
+     //   Configuration.ORIENTATION_PORTRAIT;  竖屏游戏
+        SplusPayManager.getInstance().init(this, appkey, mInitCallBackImp, true,Configuration.ORIENTATION_LANDSCAPE);
         /**
          * 悬浮按钮创建及显示
          */
@@ -123,7 +126,7 @@ public class LoginGameActivity extends Activity {
 
 
     }
-    
+
     @Override
     protected void onResume() {
         super.onResume();
