@@ -43,6 +43,13 @@
                 android:layout_height="wrap_content"
                 android:text="个人中心" />
 
+
+            <Button
+                android:id="@+id/statistics_game"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:text="统计角色区服等级" />
+
             <Button
                 android:id="@+id/loginout"
                 android:layout_width="240dp"

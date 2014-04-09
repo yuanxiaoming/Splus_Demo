@@ -68,9 +68,9 @@ public class LoginGameActivity extends Activity {
             Log.d("accout---", str);
             // 自己判断处理逻辑想做一些界面的修改包过（拿sessionid去服务器做验证，验证登录成功就进入游戏）或者想回到那个游戏界面（可选）。
 
-           /**
-            * 测试
-            */
+            /**
+             * 测试
+             */
             Intent intent=new Intent();
             intent.setClass(LoginGameActivity.this, Api_GameActivity.class);
             startActivity(intent);
@@ -105,10 +105,9 @@ public class LoginGameActivity extends Activity {
          */
         SplusPayManager.getInstance().init(this, appkey, mInitCallBackImp, true);
         /**
-         * 悬浮按钮
+         * 悬浮按钮创建及显示
          */
         mTooBar  = SplusPayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
-
         if (mTooBar != null) {
             mTooBar.show();
         }
@@ -124,9 +123,34 @@ public class LoginGameActivity extends Activity {
 
 
     }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /**
+         * 在线时长开始统计
+         */
+
+        SplusPayManager.getInstance().onResume(this);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        /**
+         * 在线时长结束统计
+         */
+        SplusPayManager.getInstance().onPause(this);
+    }
+
+
 
     protected void onDestroy() {
         super.onDestroy();
+        /**
+         * 取消悬浮按钮
+         */
         if (mTooBar != null) {
             mTooBar.recycle();
         }

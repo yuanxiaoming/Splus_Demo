@@ -29,6 +29,8 @@ public class Api_GameActivity extends Activity {
 
     private Button usercenter_btn;
 
+    private Button statistics_game_server_btn;
+
     private Button logout_btn;
 
     private Button exit_SDK_btn;
@@ -101,8 +103,9 @@ public class Api_GameActivity extends Activity {
         logout_btn = (Button) findViewById(R.id.loginout);
         exit_SDK_btn = (Button) findViewById(R.id.exit_sdk);
         exit_Game_btn = (Button) findViewById(R.id.exit_game);
+        statistics_game_server_btn=(Button) findViewById(R.id.statistics_game);
         /**
-         * 悬浮按钮
+         * 悬浮按钮创建及显示
          */
         mTooBar  = SplusPayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
         if (mTooBar != null) {
@@ -162,13 +165,23 @@ public class Api_GameActivity extends Activity {
         });
 
         /**
+         * 统计游戏角色区服等级
+         */
+        statistics_game_server_btn.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                SplusPayManager.getInstance().sendGameStatics(Api_GameActivity.this, "勇者无敌", "32级", "广东一区");
+            }
+        });
+        /**
          * 注销
          */
         logout_btn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                SplusPayManager.getInstance().logout(mLogoutCallBackImp);
+                SplusPayManager.getInstance().logout(Api_GameActivity.this,mLogoutCallBackImp);
             }
         });
 
@@ -196,8 +209,33 @@ public class Api_GameActivity extends Activity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /**
+         * 在线时长开始统计
+         */
+
+        SplusPayManager.getInstance().onResume(this);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        /**
+         * 在线时长结束统计
+         */
+        SplusPayManager.getInstance().onPause(this);
+    }
+
+
+
     protected void onDestroy() {
         super.onDestroy();
+        /**
+         * 取消悬浮按钮
+         */
         if (mTooBar != null) {
             mTooBar.recycle();
         }
