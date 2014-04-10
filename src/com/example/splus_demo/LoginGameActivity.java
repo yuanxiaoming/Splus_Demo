@@ -7,8 +7,6 @@ import com.android.splus.sdk.apiinterface.UserAccount;
 import com.android.splus.sdk.ui.FloatToolBar;
 import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
 import com.android.splus.sdk.ui.SplusPayManager;
-import com.example.splus_demo.Api_GameActivity;
-import com.example.splus_demo.R;
 
 import org.json.JSONObject;
 
