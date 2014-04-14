@@ -1,12 +1,12 @@
 
 package com.example.splus_demo;
 
+import com.android.splus.sdk.api.PayManager;
 import com.android.splus.sdk.apiinterface.LogoutCallBack;
 import com.android.splus.sdk.apiinterface.RechargeCallBack;
 import com.android.splus.sdk.apiinterface.UserAccount;
 import com.android.splus.sdk.ui.FloatToolBar;
 import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
-import com.android.splus.sdk.ui.SplusPayManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -107,7 +107,7 @@ public class Api_GameActivity extends Activity {
         /**
          * 悬浮按钮创建及显示
          */
-        mTooBar  = SplusPayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
+        mTooBar  = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
         if (mTooBar != null) {
             mTooBar.show();
         }
@@ -121,7 +121,7 @@ public class Api_GameActivity extends Activity {
                 // PayManager.getInstance().recharge(String serverName, String
                 // roleName, String outOrderid, String pext, RechargeCallBack
                 // mRechargeCallBack);
-                SplusPayManager.getInstance().recharge(Api_GameActivity.this, "湖南一区",
+                PayManager.getInstance().recharge(Api_GameActivity.this, "湖南一区",
                         "yuanxiaoming", "外部订单号outorderid", "自己扩展pext", mRechargeCallBackImp);
             }
         });
@@ -146,7 +146,7 @@ public class Api_GameActivity extends Activity {
                 Float money = Float.parseFloat(string);
 
                 // 调用
-                SplusPayManager.getInstance().rechargeByQuota(Api_GameActivity.this, "湖南一区",
+                PayManager.getInstance().rechargeByQuota(Api_GameActivity.this, "湖南一区",
                         "yuanxiaoming", "外部订单号outorderid", "自己扩展pext", money, mRechargeCallBackImp);
             }
         });
@@ -159,7 +159,7 @@ public class Api_GameActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                SplusPayManager.getInstance().enterUserCenter(Api_GameActivity.this,
+                PayManager.getInstance().enterUserCenter(Api_GameActivity.this,
                         mLogoutCallBackImp);
             }
         });
@@ -171,7 +171,7 @@ public class Api_GameActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                SplusPayManager.getInstance().sendGameStatics(Api_GameActivity.this, "勇者无敌", "32级", "广东一区");
+                PayManager.getInstance().sendGameStatics(Api_GameActivity.this, "勇者无敌", "32级", "广东一区");
             }
         });
         /**
@@ -181,7 +181,7 @@ public class Api_GameActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                SplusPayManager.getInstance().logout(Api_GameActivity.this,mLogoutCallBackImp);
+                PayManager.getInstance().logout(Api_GameActivity.this,mLogoutCallBackImp);
             }
         });
 
@@ -192,7 +192,7 @@ public class Api_GameActivity extends Activity {
         exit_SDK_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SplusPayManager.getInstance().exitSDK();
+                PayManager.getInstance().exitSDK();
             }
         });
 
@@ -203,7 +203,7 @@ public class Api_GameActivity extends Activity {
         exit_Game_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SplusPayManager.getInstance().exitGame(Api_GameActivity.this);
+                PayManager.getInstance().exitGame(Api_GameActivity.this);
             }
         });
 
@@ -216,7 +216,7 @@ public class Api_GameActivity extends Activity {
          * 在线时长开始统计
          */
 
-        SplusPayManager.getInstance().onResume(this);
+        PayManager.getInstance().onResume(this);
     }
 
 
@@ -226,7 +226,7 @@ public class Api_GameActivity extends Activity {
         /**
          * 在线时长结束统计
          */
-        SplusPayManager.getInstance().onPause(this);
+        PayManager.getInstance().onPause(this);
     }
 
 

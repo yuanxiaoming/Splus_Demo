@@ -1,12 +1,12 @@
 
 package com.example.splus_demo;
 
+import com.android.splus.sdk.api.PayManager;
 import com.android.splus.sdk.apiinterface.InitCallBack;
 import com.android.splus.sdk.apiinterface.LoginCallBack;
 import com.android.splus.sdk.apiinterface.UserAccount;
 import com.android.splus.sdk.ui.FloatToolBar;
 import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
-import com.android.splus.sdk.ui.SplusPayManager;
 
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ public class LoginGameActivity extends Activity {
         @Override
         public void initSuccess(String msg, JSONObject apkverJson) {
             Log.d("init", msg + apkverJson);
-            SplusPayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
+            PayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
         }
 
         @Override
@@ -98,17 +98,17 @@ public class LoginGameActivity extends Activity {
         setContentView(R.layout.activity_login_game);
         login_btn = (Button) findViewById(R.id.start_login_button);
         // 开启日志调试
-        SplusPayManager.getInstance().setDBUG(true);
+        PayManager.getInstance().setDBUG(true);
         /**
          * 1.默认SDK更新
          */
      //   Configuration.ORIENTATION_LANDSCAPE  横屏游戏
      //   Configuration.ORIENTATION_PORTRAIT;  竖屏游戏
-        SplusPayManager.getInstance().init(this, appkey, mInitCallBackImp, true,Configuration.ORIENTATION_LANDSCAPE);
+        PayManager.getInstance().init(this, appkey, mInitCallBackImp, true,Configuration.ORIENTATION_LANDSCAPE);
         /**
          * 悬浮按钮创建及显示
          */
-        mTooBar  = SplusPayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
+        mTooBar  = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
         if (mTooBar != null) {
             mTooBar.show();
         }
@@ -118,7 +118,7 @@ public class LoginGameActivity extends Activity {
         login_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                SplusPayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
+                PayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
             }
         });
 
@@ -132,7 +132,7 @@ public class LoginGameActivity extends Activity {
          * 在线时长开始统计
          */
 
-        SplusPayManager.getInstance().onResume(this);
+        PayManager.getInstance().onResume(this);
     }
 
 
@@ -142,7 +142,7 @@ public class LoginGameActivity extends Activity {
         /**
          * 在线时长结束统计
          */
-        SplusPayManager.getInstance().onPause(this);
+        PayManager.getInstance().onPause(this);
     }
 
 
