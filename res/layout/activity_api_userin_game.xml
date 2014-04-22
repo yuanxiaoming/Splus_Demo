@@ -12,7 +12,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
+            android:focusable="true"
             android:focusableInTouchMode="true"
             android:gravity="center"
             android:orientation="vertical"
@@ -43,6 +44,11 @@
                 android:layout_height="wrap_content"
                 android:text="个人中心" />
 
+            <Button
+                android:id="@+id/bbs"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:text="论坛" />
 
             <Button
                 android:id="@+id/statistics_game"

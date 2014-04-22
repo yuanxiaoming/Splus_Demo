@@ -11,6 +11,9 @@ import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,6 +21,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import java.util.List;
 
 public class LoginGameActivity extends Activity {
     private String appkey = "7Q/Rh-p_goN,zd?";
@@ -27,6 +32,8 @@ public class LoginGameActivity extends Activity {
     public static final String localVersion = "1.3.3";
 
     public FloatToolBar mTooBar;
+
+    private boolean isAppForeground = true;
 
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
@@ -70,7 +77,7 @@ public class LoginGameActivity extends Activity {
             /**
              * 测试
              */
-            Intent intent=new Intent();
+            Intent intent = new Intent();
             intent.setClass(LoginGameActivity.this, Api_GameActivity.class);
             startActivity(intent);
             finish();
@@ -102,13 +109,15 @@ public class LoginGameActivity extends Activity {
         /**
          * 1.默认SDK更新
          */
-     //   Configuration.ORIENTATION_LANDSCAPE  横屏游戏
-     //   Configuration.ORIENTATION_PORTRAIT;  竖屏游戏
-        PayManager.getInstance().init(this, appkey, mInitCallBackImp, true,Configuration.ORIENTATION_LANDSCAPE);
+        // Configuration.ORIENTATION_LANDSCAPE 横屏游戏
+        // Configuration.ORIENTATION_PORTRAIT; 竖屏游戏
+        PayManager.getInstance().init(this, appkey, mInitCallBackImp, true,
+                Configuration.ORIENTATION_LANDSCAPE);
         /**
          * 悬浮按钮创建及显示
          */
-        mTooBar  = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right, 0.5f);
+        mTooBar = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right,
+                0.5f);
         if (mTooBar != null) {
             mTooBar.show();
         }
@@ -122,7 +131,6 @@ public class LoginGameActivity extends Activity {
             }
         });
 
-
     }
 
     @Override
@@ -133,8 +141,8 @@ public class LoginGameActivity extends Activity {
          */
 
         PayManager.getInstance().onResume(this);
-    }
 
+    }
 
     @Override
     protected void onPause() {
@@ -143,9 +151,16 @@ public class LoginGameActivity extends Activity {
          * 在线时长结束统计
          */
         PayManager.getInstance().onPause(this);
+
     }
 
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        PayManager.getInstance().onStop(this);
+    }
 
     protected void onDestroy() {
         super.onDestroy();
@@ -157,5 +172,6 @@ public class LoginGameActivity extends Activity {
         }
     }
 
-}
 
+
+}
