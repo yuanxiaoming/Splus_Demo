@@ -11,9 +11,6 @@ import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,18 +19,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import java.util.List;
-
 public class LoginGameActivity extends Activity {
-    private String appkey = "7Q/Rh-p_goN,zd?";
 
     private Button login_btn;
 
-    public static final String localVersion = "1.3.3";
-
+    private String mAppkey = "7Q/Rh-p_goN,zd?";
+    private Integer mGameid = 1000001;
     public FloatToolBar mTooBar;
-
-    private boolean isAppForeground = true;
 
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
@@ -111,7 +103,7 @@ public class LoginGameActivity extends Activity {
          */
         // Configuration.ORIENTATION_LANDSCAPE 横屏游戏
         // Configuration.ORIENTATION_PORTRAIT; 竖屏游戏
-        PayManager.getInstance().init(this, appkey, mInitCallBackImp, true,
+        PayManager.getInstance().init(this,mGameid, mAppkey, mInitCallBackImp, true,
                 Configuration.ORIENTATION_LANDSCAPE);
         /**
          * 悬浮按钮创建及显示
