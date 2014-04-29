@@ -162,6 +162,10 @@ public class LoginGameActivity extends Activity {
         if (mTooBar != null) {
             mTooBar.recycle();
         }
+        /**
+         * 销毁实例
+         */
+        PayManager.getInstance().onDestroy(this);
     }
 
 
