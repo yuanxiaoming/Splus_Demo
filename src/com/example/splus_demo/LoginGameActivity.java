@@ -139,9 +139,6 @@ public class LoginGameActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        /**
-         * 在线时长结束统计
-         */
         PayManager.getInstance().onPause(this);
 
     }

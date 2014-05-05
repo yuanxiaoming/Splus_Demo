@@ -132,7 +132,7 @@ public class Api_GameActivity extends Activity {
                 // PayManager.getInstance().recharge(String serverName, String
                 // roleName, String outOrderid, String pext, RechargeCallBack
                 // mRechargeCallBack);
-                PayManager.getInstance().recharge(Api_GameActivity.this, "湖南一区", "yuanxiaoming",
+                PayManager.getInstance().recharge(Api_GameActivity.this, 1111,"湖南一区", 2222,"yuanxiaoming",
                         "外部订单号outorderid", "自己扩展pext", mRechargeCallBackImp);
             }
         });
@@ -145,10 +145,7 @@ public class Api_GameActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // public void rechargeByQuota(String serverName, String
-                // roleName,
-                // String outOrderid, String pext, Float money, RechargeCallBack
-                // mRechargeCallBack);
+
                 String string = rechargeEditText.getText().toString();
                 if (TextUtils.isEmpty(string)) {
                     Toast.makeText(Api_GameActivity.this, "请输入金额", Toast.LENGTH_LONG).show();
@@ -157,7 +154,7 @@ public class Api_GameActivity extends Activity {
                 Float money = Float.parseFloat(string);
 
                 // 调用
-                PayManager.getInstance().rechargeByQuota(Api_GameActivity.this, "湖南一区",
+                PayManager.getInstance().rechargeByQuota(Api_GameActivity.this, 1111,"湖南一区",2222,
                         "yuanxiaoming", "外部订单号outorderid", "自己扩展pext", money, mRechargeCallBackImp);
             }
         });
@@ -190,8 +187,8 @@ public class Api_GameActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                PayManager.getInstance().sendGameStatics(Api_GameActivity.this, "勇者无敌", "32级",
-                        "广东一区");
+                PayManager.getInstance().sendGameStatics(Api_GameActivity.this, 1111,"湖南一区",2222,
+                        "yuanxiaoming", "32级");
             }
         });
         /**
@@ -232,10 +229,6 @@ public class Api_GameActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        /**
-         * 在线时长开始统计
-         */
-
         PayManager.getInstance().onResume(this);
 
     }
@@ -243,7 +236,6 @@ public class Api_GameActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-
         PayManager.getInstance().onPause(this);
 
     }
@@ -264,6 +256,10 @@ public class Api_GameActivity extends Activity {
         if (mTooBar != null) {
             mTooBar.recycle();
         }
+        /**
+         * 销毁实例
+         */
+        PayManager.getInstance().onDestroy(this);
     }
 
 

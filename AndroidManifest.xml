@@ -12,6 +12,7 @@
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
+        android:resizeable="true"
         android:smallScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -210,6 +211,20 @@
             android:name="QHOPENSDK_CHANNEL"
             android:value="default" >
         </meta-data>
+
+        <!-- uc -->
+        <!-- 新版本需使用新的SdkActivity -->
+        <activity
+            android:name="cn.uc.gamesdk.SdkActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="cn.uc.gamesdk.sdkweb" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
