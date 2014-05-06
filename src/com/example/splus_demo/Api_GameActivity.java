@@ -61,10 +61,13 @@ public class Api_GameActivity extends Activity {
 
         @Override
         public void rechargeSuccess(UserAccount account) {
+            if(account!=null){
             String name = account.getUserName();
             int uid = account.getUserUid();
             String str = "name=" + name + "," + "uid=" + uid;
             Log.d("accout----", str);
+
+            }
             // 自己判断处理逻辑想做一些界面的修改
         }
 

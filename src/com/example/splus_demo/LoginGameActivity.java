@@ -58,12 +58,13 @@ public class LoginGameActivity extends Activity {
     private LoginCallBack mLoginCallBackImp = new LoginCallBack() {
         @Override
         public void loginSuccess(UserAccount account) {
-
-            String name = account.getUserName();
-            int uid = account.getUserUid();
-            String sessionid = account.getSession();
-            String str = "name=" + name + "," + "uid=" + uid + "," + "sessionid=" + sessionid;
-            Log.d("accout---", str);
+            if(account!=null){ 
+                String name = account.getUserName();
+                int uid = account.getUserUid();
+                String sessionid = account.getSession();
+                String str = "name=" + name + "," + "uid=" + uid + "," + "sessionid=" + sessionid;
+                Log.d("accout---", str);
+            }
             // 自己判断处理逻辑想做一些界面的修改包过（拿sessionid去服务器做验证，验证登录成功就进入游戏）或者想回到那个游戏界面（可选）。
 
             /**
@@ -104,12 +105,12 @@ public class LoginGameActivity extends Activity {
         // Configuration.ORIENTATION_LANDSCAPE 横屏游戏
         // Configuration.ORIENTATION_PORTRAIT; 竖屏游戏
         PayManager.getInstance().init(this,mGameid, mAppkey, mInitCallBackImp, true,
-                Configuration.ORIENTATION_LANDSCAPE);
+                        Configuration.ORIENTATION_LANDSCAPE);
         /**
          * 悬浮按钮创建及显示
          */
         mTooBar = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right,
-                0.5f);
+                        0.5f);
         if (mTooBar != null) {
             mTooBar.show();
         }
