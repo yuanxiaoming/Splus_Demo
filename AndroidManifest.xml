@@ -227,6 +227,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <!-- dcn -->
+        <activity
+            android:name="com.downjoy.activity.SdkActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/dcn_Activity_Transparent"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <service android:name="com.downjoy.service.PollingService" >
+            <intent-filter>
+                <action android:name="action.downjoy.polling.service" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
