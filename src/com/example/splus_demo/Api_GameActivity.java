@@ -9,9 +9,8 @@ import com.android.splus.sdk.ui.FloatToolBar;
 import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,8 +20,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class Api_GameActivity extends Activity {
 
@@ -40,13 +37,12 @@ public class Api_GameActivity extends Activity {
 
     private Button exit_SDK_btn;
 
-    private Button exit_Game_btn;
-
     private Button bbs_btn;
 
     public FloatToolBar mTooBar;
 
-    private boolean isAppForeground = true;
+
+
 
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
@@ -94,10 +90,16 @@ public class Api_GameActivity extends Activity {
             /***
              * 此方法及参考
              */
-            Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(
-                    getBaseContext().getPackageName());
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);
+            Intent intent =getApplicationContext().getPackageManager().getLaunchIntentForPackage(getPackageName());
+            if(android.os.Build.VERSION.SDK_INT >= 11){
+                intent.addFlags(32768);
+            }else{
+                intent.addFlags(67108864);
+            }
+            PendingIntent intent1 = PendingIntent.getActivity(Api_GameActivity.this, 223344, intent, 268435456);
+            ((AlarmManager)getSystemService("alarm")).set(1, System.currentTimeMillis() + 100L, intent1);
+            System.exit(0);
+
 
         }
     };
@@ -115,7 +117,6 @@ public class Api_GameActivity extends Activity {
         bbs_btn = (Button) findViewById(R.id.bbs);
         logout_btn = (Button) findViewById(R.id.loginout);
         exit_SDK_btn = (Button) findViewById(R.id.exit_sdk);
-        exit_Game_btn = (Button) findViewById(R.id.exit_game);
         statistics_game_server_btn = (Button) findViewById(R.id.statistics_game);
         /**
          * 悬浮按钮创建及显示
@@ -216,16 +217,7 @@ public class Api_GameActivity extends Activity {
             }
         });
 
-        /**
-         * 退出GAME
-         */
 
-        exit_Game_btn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PayManager.getInstance().exitGame(Api_GameActivity.this);
-            }
-        });
 
     }
 
