@@ -88,7 +88,7 @@ public class Api_GameActivity extends Activity {
         @Override
         public void logoutCallBack() {
             /***
-             * 此方法及参考
+             * 此方法及参考(重启游戏代码)
              */
             Intent intent =getApplicationContext().getPackageManager().getLaunchIntentForPackage(getPackageName());
             if(android.os.Build.VERSION.SDK_INT >= 11){

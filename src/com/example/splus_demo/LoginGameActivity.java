@@ -58,7 +58,7 @@ public class LoginGameActivity extends Activity {
     private LoginCallBack mLoginCallBackImp = new LoginCallBack() {
         @Override
         public void loginSuccess(UserAccount account) {
-            if(account!=null){ 
+            if(account!=null){
                 String name = account.getUserName();
                 int uid = account.getUserUid();
                 String sessionid = account.getSession();
@@ -104,8 +104,7 @@ public class LoginGameActivity extends Activity {
          */
         // Configuration.ORIENTATION_LANDSCAPE 横屏游戏
         // Configuration.ORIENTATION_PORTRAIT; 竖屏游戏
-        PayManager.getInstance().init(this,mGameid, mAppkey, mInitCallBackImp, true,
-                        Configuration.ORIENTATION_LANDSCAPE);
+        PayManager.getInstance().init(this,mGameid, mAppkey, mInitCallBackImp, true, Configuration.ORIENTATION_LANDSCAPE);
         /**
          * 悬浮按钮创建及显示
          */
