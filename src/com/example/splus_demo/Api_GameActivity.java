@@ -7,6 +7,7 @@ import com.android.splus.sdk.apiinterface.RechargeCallBack;
 import com.android.splus.sdk.apiinterface.UserAccount;
 import com.android.splus.sdk.ui.FloatToolBar;
 import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
+import com.example.migamecenrtersdkdemo.online.R;
 
 import android.app.Activity;
 import android.app.AlarmManager;

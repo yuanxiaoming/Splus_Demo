@@ -21,18 +21,18 @@ uc_gameId=119474
 uc_gameName=我是海贼王
 uc_serverId=1333
 
-##Xiaomi
-mi_appid=UEsDBBQACAAIABNpgUMAAAAAAAAAAAAAAAABAAAAMDMysDAxBwBQSwcIigYHxAcAAAAFAAAA
-mi_appkey=UEsDBBQACAAIABtpgUMAAAAAAAAAAAAAAAABAAAAMDNLMky1NDEw0k1KTTPStTQ1TdO1TLSw0DU1MjMzNTNNMTE2MQYAUEsHCHetrBImAAAAJAAAAA==
+##xiaomi
+xiaomi_appid=2698
+xiaomi_appkey=1a45711e-bef6-e2bb-70d9-5044de552c71
 
 ##Gfan
 #usesdk=4
 
 ##Dcn
-Dcn_appid=195
-Dcn_appkey=j5VEvxhc
-Dcn_merchantId=101
-Dcn_serverSeqNum=1
+dcn_appid=195
+dcn_appkey=j5VEvxhc
+dcn_merchantId=101
+dcn_serverSeqNum=1
 
 ##DUOKU
 dk_appid=UEsDBBQACAAIADVpgUMAAAAAAAAAAAAAAAABAAAAMDO0MDQDAFBLBwjbZkxKBgAAAAQAAAA=
