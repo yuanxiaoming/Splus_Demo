@@ -1,12 +1,11 @@
 
 package com.example.splus_demo;
 
-import com.android.splus.sdk.api.PayManager;
+
 import com.android.splus.sdk.apiinterface.InitCallBack;
 import com.android.splus.sdk.apiinterface.LoginCallBack;
+import com.android.splus.sdk.apiinterface.PayManager;
 import com.android.splus.sdk.apiinterface.UserAccount;
-import com.android.splus.sdk.ui.FloatToolBar;
-import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
 import com.example.migamecenrtersdkdemo.online.R;
 
 import org.json.JSONObject;
@@ -26,7 +25,6 @@ public class LoginGameActivity extends Activity {
 
     private String mAppkey = "7Q/Rh-p_goN,zd?";
     private Integer mGameid = 1000001;
-    public FloatToolBar mTooBar;
 
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
@@ -109,11 +107,8 @@ public class LoginGameActivity extends Activity {
         /**
          * 悬浮按钮创建及显示
          */
-        mTooBar = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right,
-                        0.5f);
-        if (mTooBar != null) {
-            mTooBar.show();
-        }
+         PayManager.getInstance().creatFloatButton(this, true,0,0.5f);
+
         /**
          * 登录接口调用
          */
@@ -154,12 +149,6 @@ public class LoginGameActivity extends Activity {
 
     protected void onDestroy() {
         super.onDestroy();
-        /**
-         * 取消悬浮按钮
-         */
-        if (mTooBar != null) {
-            mTooBar.recycle();
-        }
         /**
          * 销毁实例
          */

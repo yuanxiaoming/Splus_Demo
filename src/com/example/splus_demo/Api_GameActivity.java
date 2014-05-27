@@ -1,12 +1,11 @@
 
 package com.example.splus_demo;
 
-import com.android.splus.sdk.api.PayManager;
+
 import com.android.splus.sdk.apiinterface.LogoutCallBack;
+import com.android.splus.sdk.apiinterface.PayManager;
 import com.android.splus.sdk.apiinterface.RechargeCallBack;
 import com.android.splus.sdk.apiinterface.UserAccount;
-import com.android.splus.sdk.ui.FloatToolBar;
-import com.android.splus.sdk.ui.FloatToolBar.FloatToolBarAlign;
 import com.example.migamecenrtersdkdemo.online.R;
 
 import android.app.Activity;
@@ -40,11 +39,6 @@ public class Api_GameActivity extends Activity {
 
     private Button bbs_btn;
 
-    public FloatToolBar mTooBar;
-
-
-
-
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
      */
@@ -59,10 +53,10 @@ public class Api_GameActivity extends Activity {
         @Override
         public void rechargeSuccess(UserAccount account) {
             if(account!=null){
-            String name = account.getUserName();
-            int uid = account.getUserUid();
-            String str = "name=" + name + "," + "uid=" + uid;
-            Log.d("accout----", str);
+                String name = account.getUserName();
+                int uid = account.getUserUid();
+                String str = "name=" + name + "," + "uid=" + uid;
+                Log.d("accout----", str);
 
             }
             // 自己判断处理逻辑想做一些界面的修改
@@ -122,11 +116,8 @@ public class Api_GameActivity extends Activity {
         /**
          * 悬浮按钮创建及显示
          */
-        mTooBar = PayManager.getInstance().creatFloatButton(this, true, FloatToolBarAlign.Right,
-                0.5f);
-        if (mTooBar != null) {
-            mTooBar.show();
-        }
+        PayManager.getInstance().creatFloatButton(this, true, 0,0.5f);
+
         /**
          * 不定额充值接口调用
          */
@@ -138,7 +129,7 @@ public class Api_GameActivity extends Activity {
                 // roleName, String outOrderid, String pext, RechargeCallBack
                 // mRechargeCallBack);
                 PayManager.getInstance().recharge(Api_GameActivity.this, 1111,"湖南一区", 2222,"yuanxiaoming",
-                        "外部订单号outorderid", "自己扩展pext", mRechargeCallBackImp);
+                                "外部订单号outorderid", "自己扩展pext", mRechargeCallBackImp);
             }
         });
 
@@ -160,7 +151,7 @@ public class Api_GameActivity extends Activity {
 
                 // 调用
                 PayManager.getInstance().rechargeByQuota(Api_GameActivity.this, 1111,"湖南一区",2222,
-                        "yuanxiaoming", "外部订单号outorderid", "自己扩展pext", money, mRechargeCallBackImp);
+                                "yuanxiaoming", "外部订单号outorderid", "自己扩展pext", money, mRechargeCallBackImp);
             }
         });
 
@@ -193,7 +184,7 @@ public class Api_GameActivity extends Activity {
             @Override
             public void onClick(View v) {
                 PayManager.getInstance().sendGameStatics(Api_GameActivity.this, 1111,"湖南一区",2222,
-                        "yuanxiaoming", "32级");
+                                "yuanxiaoming", "32级");
             }
         });
         /**
@@ -246,12 +237,6 @@ public class Api_GameActivity extends Activity {
 
     protected void onDestroy() {
         super.onDestroy();
-        /**
-         * 取消悬浮按钮
-         */
-        if (mTooBar != null) {
-            mTooBar.recycle();
-        }
         /**
          * 销毁实例
          */

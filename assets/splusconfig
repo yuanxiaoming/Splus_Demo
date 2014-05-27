@@ -1,11 +1,5 @@
-##orientation:1-竖屏,2-横屏
-orientation=2
-
-##quota: 1-定额 2-不定额
-quota=1
-
 ##partner:联运商
-partner=1
+partner=4
 
 ##referer：渠道
 referer=sy00000
