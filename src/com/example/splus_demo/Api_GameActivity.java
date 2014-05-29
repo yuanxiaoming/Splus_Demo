@@ -39,6 +39,7 @@ public class Api_GameActivity extends Activity {
 
     private Button bbs_btn;
 
+
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
      */
@@ -56,7 +57,7 @@ public class Api_GameActivity extends Activity {
                 String name = account.getUserName();
                 int uid = account.getUserUid();
                 String str = "name=" + name + "," + "uid=" + uid;
-                Log.d("accout----", str);
+                Log.d("rechargeSuccess-----Accout----", str);
 
             }
             // 自己判断处理逻辑想做一些界面的修改
@@ -64,13 +65,13 @@ public class Api_GameActivity extends Activity {
 
         @Override
         public void rechargeFaile(String errorMsg) {
-            Log.d("rechargeFaile", errorMsg);
+            Log.d("rechargeFaile-----", errorMsg);
             // 自己判断处理逻辑想做一些界面的修改
         }
 
         @Override
         public void backKey(String errorMsg) {
-            Log.d("backKey", errorMsg);
+            Log.d("backKey------", errorMsg);
             // 自己判断处理逻辑想做一些界面的修改
         }
     };
@@ -117,6 +118,8 @@ public class Api_GameActivity extends Activity {
          * 悬浮按钮创建及显示
          */
         PayManager.getInstance().creatFloatButton(this, true, 0,0.5f);
+
+
 
         /**
          * 不定额充值接口调用
@@ -215,32 +218,32 @@ public class Api_GameActivity extends Activity {
 
     @Override
     protected void onResume() {
-        super.onResume();
         PayManager.getInstance().onResume(this);
+        super.onResume();
 
     }
 
     @Override
     protected void onPause() {
-        super.onPause();
         PayManager.getInstance().onPause(this);
+        super.onPause();
 
     }
 
 
     @Override
     protected void onStop() {
-        super.onStop();
         PayManager.getInstance().onStop(this);
+        super.onStop();
 
     }
 
     protected void onDestroy() {
-        super.onDestroy();
         /**
          * 销毁实例
          */
         PayManager.getInstance().onDestroy(this);
+        super.onDestroy();
     }
 
 

@@ -77,9 +77,7 @@
 
         <activity
             android:name="com.example.splus_demo.LoginGameActivity"
-            android:alwaysRetainTaskState="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleInstance"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -90,13 +88,11 @@
         </activity>
         <activity
             android:name="com.example.splus_demo.Api_GameActivity"
-            android:alwaysRetainTaskState="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleInstance"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize" >
         </activity>
-        <!-- _____________________________________________________________________________________________________________________________________________________________________ -->
+
         <!-- splus-alipay配置 -->
 
         <activity
@@ -192,14 +188,21 @@
             android:name="com.nd.commplatform.activity.SNSLoginActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:launchMode="singleTask"
-            android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowBackground="@null"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.nd.commplatform.gc.activity.ForumActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="landscape" />
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.nd.commplatform.activity.SNSAppPromotionActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowBackground="@null"
+            android:windowSoftInputMode="adjustPan" />
 
         <service
             android:name="com.nd.commplatform.service.NdDownloadService"
@@ -220,6 +223,7 @@
             android:name="com.nd.commplatform.service.NdNewMessageNotification"
             android:enabled="true"
             android:exported="false" />
+
         <!-- 360 -->
         <!-- 添加360SDK必需的activity：com.qihoopay.insdk.activity.ContainerActivity -->
         <activity

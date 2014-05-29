@@ -26,6 +26,7 @@ public class LoginGameActivity extends Activity {
     private String mAppkey = "7Q/Rh-p_goN,zd?";
     private Integer mGameid = 1000001;
 
+
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
      */
@@ -39,13 +40,13 @@ public class LoginGameActivity extends Activity {
 
         @Override
         public void initSuccess(String msg, JSONObject apkverJson) {
-            Log.d("init", msg + apkverJson);
+            Log.d("initSuccess-----", msg + apkverJson);
             PayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
         }
 
         @Override
         public void initFaile(String errorMsg) {
-            Log.d("initFaile", errorMsg);
+            Log.d("initFaile------", errorMsg);
 
         }
 
@@ -62,7 +63,7 @@ public class LoginGameActivity extends Activity {
                 int uid = account.getUserUid();
                 String sessionid = account.getSession();
                 String str = "name=" + name + "," + "uid=" + uid + "," + "sessionid=" + sessionid;
-                Log.d("accout---", str);
+                Log.d("loginSuccess----Accout---", str);
             }
             // 自己判断处理逻辑想做一些界面的修改包过（拿sessionid去服务器做验证，验证登录成功就进入游戏）或者想回到那个游戏界面（可选）。
 
@@ -79,13 +80,13 @@ public class LoginGameActivity extends Activity {
         @Override
         public void loginFaile(String errorMsg) {
             // 登录失败的回调
-            Log.d("loginFaile", errorMsg);
+            Log.d("loginFaile----", errorMsg);
         }
 
         @Override
         public void backKey(String errorMsg) {
             // 取消登录或者是注册
-            Log.d("backKey", errorMsg);
+            Log.d("backKey-----", errorMsg);
         }
     };
 
@@ -105,11 +106,6 @@ public class LoginGameActivity extends Activity {
         // Configuration.ORIENTATION_PORTRAIT; 竖屏游戏
         PayManager.getInstance().init(this,mGameid, mAppkey, mInitCallBackImp, true, Configuration.ORIENTATION_LANDSCAPE);
         /**
-         * 悬浮按钮创建及显示
-         */
-         PayManager.getInstance().creatFloatButton(this, true,0,0.5f);
-
-        /**
          * 登录接口调用
          */
         login_btn.setOnClickListener(new OnClickListener() {
@@ -123,19 +119,18 @@ public class LoginGameActivity extends Activity {
 
     @Override
     protected void onResume() {
-        super.onResume();
         /**
          * 在线时长开始统计
          */
-
         PayManager.getInstance().onResume(this);
+        super.onResume();
 
     }
 
     @Override
     protected void onPause() {
-        super.onPause();
         PayManager.getInstance().onPause(this);
+        super.onPause();
 
     }
 
@@ -143,16 +138,16 @@ public class LoginGameActivity extends Activity {
 
     @Override
     protected void onStop() {
-        super.onStop();
         PayManager.getInstance().onStop(this);
+        super.onStop();
     }
 
     protected void onDestroy() {
-        super.onDestroy();
         /**
          * 销毁实例
          */
         PayManager.getInstance().onDestroy(this);
+        super.onDestroy();
     }
 
 
