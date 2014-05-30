@@ -424,7 +424,7 @@
              <activity
             android:name="com.mokredit.payment.MktPayment"
             android:configChanges="keyboardHidden|orientation"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize" />
         -->
         <!-- start for net bank -->
 
@@ -485,7 +485,7 @@
         <!--
         <meta-data
             android:name="lm168_cid"
-            android:value="" />
+            android:value="" />
         -->
         <!-- end for gfan sdk -->
     </application>
