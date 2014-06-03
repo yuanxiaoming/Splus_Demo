@@ -26,6 +26,8 @@ public class LoginGameActivity extends Activity {
     private String mAppkey = "7Q/Rh-p_goN,zd?";
     private Integer mGameid = 1000001;
 
+    private boolean mInited=false;
+
 
     /**
      * 本demo采用实现接口的回调的方式是匿名内部类 对接游戏方可采用自己的方式实现接口回调
@@ -40,14 +42,21 @@ public class LoginGameActivity extends Activity {
 
         @Override
         public void initSuccess(String msg, JSONObject apkverJson) {
-            Log.d("initSuccess-----", msg + apkverJson);
+            if(apkverJson!=null){
+                Log.d("initSuccess-----", msg + apkverJson.toString());
+            }else{
+                Log.d("initSuccess-----", msg);
+            }
+            //记录是否初始化完成
+            mInited=true;
+            //自动调用登录接口出现登录窗口
             PayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
         }
 
         @Override
         public void initFaile(String errorMsg) {
             Log.d("initFaile------", errorMsg);
-
+            mInited=false;
         }
 
     };
@@ -104,14 +113,20 @@ public class LoginGameActivity extends Activity {
          */
         // Configuration.ORIENTATION_LANDSCAPE 横屏游戏
         // Configuration.ORIENTATION_PORTRAIT; 竖屏游戏
-        PayManager.getInstance().init(this,mGameid, mAppkey, mInitCallBackImp, true, Configuration.ORIENTATION_LANDSCAPE);
+        PayManager.getInstance().init(LoginGameActivity.this,mGameid, mAppkey, mInitCallBackImp, true, Configuration.ORIENTATION_LANDSCAPE);
+
         /**
          * 登录接口调用
          */
         login_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                PayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
+                //判断是否初始化接口.
+                if(mInited){
+                    PayManager.getInstance().login(LoginGameActivity.this, mLoginCallBackImp);
+                }else{
+                    PayManager.getInstance().init(LoginGameActivity.this,mGameid, mAppkey, mInitCallBackImp, true, Configuration.ORIENTATION_LANDSCAPE);
+                }
             }
         });
 
