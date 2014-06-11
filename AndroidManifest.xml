@@ -28,6 +28,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
 
     <!-- 91社区 -->
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -294,8 +295,8 @@
                 <action android:name="action.downjoy.polling.service" />
             </intent-filter>
         </service>
-
-        <!-- duoku -->
+        <!--
+        duoku
         <activity
             android:name="com.duoku.platform.ui.DKContainerActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
@@ -309,7 +310,7 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
         </activity>
-        <!-- mo9 -->
+        mo9
         <activity
             android:name="com.mokredit.payment.MktPayment"
             android:configChanges="keyboardHidden|orientation"
@@ -333,8 +334,8 @@
 
         <service android:name="com.duoku.platform.service.DKSuspensionService" />
 
-        <!-- push service client -->
-        <!-- myself receiver -->
+        push service client
+        myself receiver
         <receiver android:name="com.duoku.platform.push.MyReceiver" >
             <intent-filter>
                 <action android:name="com.duoku" />
@@ -343,15 +344,15 @@
         <receiver android:name="com.duoku.platform.push.PushMessageReceiver" >
             <intent-filter>
 
-                <!-- 接收push消息 -->
+                接收push消息
                 <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
-                <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
+                接收bind,unbind,fetch,delete等反馈消息
                 <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
                 <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
             </intent-filter>
         </receiver>
 
-        <!-- push service -->
+        push service
         <receiver
             android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1" >
@@ -380,7 +381,8 @@
             android:name="com.baidu.android.pushservice.PushService"
             android:exported="true"
             android:process=":bdservice_v1" />
-        <!-- push service end -->
+        push service end
+        -->
 
 
         <!-- start for gfan sdk -->
@@ -426,7 +428,7 @@
              <activity
             android:name="com.mokredit.payment.MktPayment"
             android:configChanges="keyboardHidden|orientation"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize" />
         -->
         <!-- start for net bank -->
 
@@ -487,7 +489,7 @@
         <!--
         <meta-data
             android:name="lm168_cid"
-            android:value="" />
+            android:value="" />
         -->
         <!-- end for gfan sdk -->
     </application>
