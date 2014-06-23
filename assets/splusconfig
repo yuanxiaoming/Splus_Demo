@@ -1,5 +1,5 @@
 ##partner:联运商
-partner=1
+partner=8
 
 ##referer：渠道
 referer=sy00000
@@ -21,6 +21,8 @@ xiaomi_appkey=1a45711e-bef6-e2bb-70d9-5044de552c71
 
 ##Gfan
 #usesdk=4
+gfan_appkey=325077622
+gfan_cpid=10000
 
 ##Dcn
 dcn_appid=195
